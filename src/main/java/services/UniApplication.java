@@ -9,9 +9,10 @@ import java.util.Set;
 @ApplicationPath("/services")
 public class UniApplication extends Application {
 	   private Set<Object> singletons = new HashSet<Object>();
-
+	   private Set<Class<?>> classes = new HashSet<Class<?>>();
 	   public UniApplication()
 	   {
+		  classes.add(Auditor.class);
 	      singletons.add(new LectureResourceImp());
 	   }
 
@@ -19,5 +20,11 @@ public class UniApplication extends Application {
 	   public Set<Object> getSingletons()
 	   {
 	      return singletons;
+	   }
+	   
+	   @Override
+	   public Set<Class<?>> getClasses()
+	   {
+	      return classes;
 	   }
 }
